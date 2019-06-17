@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 移动端 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <!-- swiper插件的css -->
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <!-- 自己的css -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="music">
+      <audio src="music/沈宁-还有多少个十年(励志版).mp3"  loop autoplay></audio>
+    </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide page1">
+          <!-- 第一页 -->
+          <img class="desk ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s"
+            swiper-animate-delay="0s" src="images/img/时光_13.png" alt="">
+
+          <img class="qingchun ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s"
+            swiper-animate-delay="3s" src="images/img/纪念_07.png" alt="">
+          
+            <img class="zhi ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1s"
+            src="images/zhi.png" alt="">
+
+          <img class="shiqu ani" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="1s"
+            swiper-animate-delay="2s" src="images/img/毕业_06.png" alt="">
+
+
+          <img class="peoples ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s"
+            swiper-animate-delay="0s" src="images/img/树_06.png" alt="">
+
+        </div>
+        <div class="swiper-slide page2">
+          <!-- 第二页 --> 
+          <img class="book2 ani" src="images/img/images/烟花左_04.png" swiper-animate-effect="fadeInRight"
+            swiper-animate-duration="1s" swiper-animate-delay="2s" alt="">
+
+          <img class="book3 ani" src="images/img/images/烟花右_05.png" swiper-animate-effect="fadeInRight"
+            swiper-animate-duration="1s" swiper-animate-delay="2s" alt="">
+
+             <img class="rule ani" src="images/img/images/气球背景_02.png" swiper-animate-effect="rotateIn " swiper-animate-duration="2 s"
+            swiper-animate-delay="3s" alt="">
+         <!-- 诗歌 -->
+        <img src="images/img/images/文字_07.png" class="textContent ani" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s"
+            swiper-animate-delay="5s" alt="">
+          <!-- 相框 -->
+          <div class="photoBox ani" swiper-animate-effect="" swiper-animate-duration="1s"
+          swiper-animate-delay="1s" >
+            <img class="photo ani" src="images/img/images/相片_03.jpg" swiper-animate-effect=" rotateIn" swiper-animate-duration="1s"
+              swiper-animate-delay="4s" alt="">
+          </div>   
+            <img class="book1 ani" src="images/img/images/四个人_10.png" swiper-animate-effect="fadeInRight"
+            swiper-animate-duration="1s" swiper-animate-delay="1s" alt="">   
+
+ 
+          <img class="book ani" src="" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s"
+            swiper-animate-delay="0s" alt="">
+
+          <img class="busan ani" src="" swiper-animate-effect="bounceInRight "
+            swiper-animate-duration="1s" swiper-animate-delay="0.5s" alt="">
+
+          <img class="math ani" src="" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s"
+            swiper-animate-delay="1.5s" alt="">
+
+        </div>
+        <!-- 第三页 -->
+        <div class="swiper-slide page3">
+          <img class="jvshou ani" src="images/page3_jvshou.png" swiper-animate-effect="fadeIn"
+            swiper-animate-duration="1s" swiper-animate-delay="2s" alt="">
+
+          <img class="people ani" src="images/img/images/images/桌子_04.png" alt="">
+          <section class="blackBoard ani" swiper-animate-effect=" flipInX " swiper-animate-duration="1s"
+            swiper-animate-delay="1s">
+            <section class="erweima ani"swiper-animate-effect="rotateIn" swiper-animate-duration="1s"
+            swiper-animate-delay="3s">
+            </section>
+            <section class="tips ani"swiper-animate-effect=" slideInUp" swiper-animate-duration="1s"
+            swiper-animate-delay="4s">
+              <p>扫码联系</p>
+              <p>勿忘我</p>
+            </section>
+          </section>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-next"></div>
+  </div>
+  </div>
+</body>
+
+</html>
+<script>
+  ~ function () {
+    function computed() {
+      var pcWidth = document.documentElement.clientWidth
+      var des = 750;
+      if (pcWidth > 750) {
+        document.documentElement.style.fontSize = "100px";
+
+        return;
+      }
+      document.documentElement.style.fontSize = pcWidth / des * 100 + "px";
+    }
+    computed()
+
+  }();
+</script>
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate.min.js"></script>
+<script>
+  window.onload = function () {
+    var mySwiper = new Swiper('.swiper-container', {
+      direction: 'vertical', // 垂直切换选项
+      loop: true, // 循环模式选项
+      // 如果需要前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      on: {
+        init: function () {
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        },
+        slideChangeTransitionEnd: function () {
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        }
+      }
+
+
+    })
+  }
+
+
+</script>
